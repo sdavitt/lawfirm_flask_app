@@ -1,0 +1,8 @@
+<div class="navigation">
+    <nav class="navbar nav-pills nav-fill">
+        {% for href, id, caption in navigation_bar %}
+        <a class="nav-item nav-link" id="{% if id == active_page %}active{% endif %}" 
+        href="{{ href|e }}">{{ caption|e }}</a>
+        {% endfor %}
+    </nav>
+</div>

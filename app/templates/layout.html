@@ -1,0 +1,131 @@
+{% set navigation_bar = [
+    ('/', 'main.index', 'Home'),    
+    ('/whatwedo', 'main.whatwedo', 'What We Do'),
+    ('/news', 'main.news', 'News & Events'),
+    ('/wherewework', 'main.wherewework', 'Where We Work'),
+    ('/whoweare', 'main.whoweare', 'Who We Are'),
+    ('/contactus', 'main.contactus', 'Contact Us'),
+] -%}
+
+{% set active_page = active_page|default('main.index') -%}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>
+    {% block title %}
+    Lawfirm
+    {% endblock %}
+  </title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+
+<body>
+  <div class="woodenbackground container-fluid" id="wood">
+    <div class="row justify-content-center">
+      <div class="col-8 paperpiece shadow-lg">
+        <header>
+          <!------------------------------header image -ken ------------------------->
+          <div class="container">
+            <div class="row">
+              <div class="col-md-5">
+                <img src="https://via.placeholder.com/318x76.png" class="img-fluid a" alt="random image" />
+              </div>
+              <div class="col-md-4">
+              </div>
+              <div class="col-md-2">
+                <div class="login_reg">
+                  <div type="button" class="login_reg btn btn-sm btn-block btn-outline-primary create_btn">
+                    {% if current_user.is_authenticated %}
+                    <a class="login_b" href="{{ url_for('authentication.logout') }}">LOGOUT</a>
+                    {% else %}
+                    <a class="login_b" href="{{ url_for('authentication.login') }}">LOGIN</a>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- navbar for all pages -SD-->
+          {% include './partials/navigation.html' %}
+
+        </header>
+        <main>
+          {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+          {% for c, m in messages %}
+          <!-- b4-alert-closable -->
+          <div class="alert alert-{{ c }} alert-dismissible fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <strong>{{ m }}</strong>
+          </div>
+          {% endfor %}
+          {% endif %}
+          {% endwith %}
+          <!-- FLASH MESSAGES - END -->
+
+          {% block body %}
+          <!-- MAIN CONTENT HERE -->
+          {% endblock %}
+        </main>
+
+        <footer>
+          <div class="row fluid justify-content-center" id="f3">
+            <div class="col-md">
+              <p class="p1" id="before"><a href="{{ url_for('index') }}" class="f1">HOMEPAGE</a></p>
+            </div>
+            <div class="col-md">
+              <p class="p1"><a href="{{ url_for('whatwedo') }}" class="f1">WHAT WE DO</a></p>
+            </div>
+            <div class="col-md">
+              <p class="p1"><a href="{{ url_for('wherewework') }}" class="f1">WHERE WE WORK</a></p>
+            </div>
+            <div class="col-md">
+              <p class="p1"><a href="{{ url_for('whoweare') }}" class="f1">WHO WE ARE</a></p>
+            </div>
+            <div class="col-md">
+              <p class="p1"><a href="{{ url_for('news') }}" class="f1">NEWS & EVENTS</a></p>
+            </div>
+            <div class="col-md">
+              <p class="p1" id="after"><a href="{{ url_for('contactus') }}" class="f1">CONTACT US</a></p>
+            </div>
+          </div>
+          <div>
+            <p class="text-center f2">© 2018 Conor Miliken</p>
+          </div>
+        </footer>
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        {% block scripts %}
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+          integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+          crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+          integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+          crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+          integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+          crossorigin="anonymous"></script>
+        {{ moment.include_jquery() }}
+        {{ moment.include_moment() }}
+        {% endblock %}
+      </div>
+    </div>
+  </div>
+</body>
+
+
+</html>

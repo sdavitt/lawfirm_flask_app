@@ -1,0 +1,81 @@
+{% extends 'layout.html' %}
+{% set active_page='main.contactus' -%}
+
+{% block title %}
+{{ super() }} | Contact Us
+{% endblock %}
+
+{% block body %}
+<main>
+    <div class="row">
+        <div class="col-md-3" style="padding-left: 0px;">
+            <div id="www-sidebar">
+                <div id="www-sidebar-content">
+                    <h5 class="sidebar-title">Contact Us</h5>
+                    <ul class="list-unstyled">
+                        <div class="category">
+                            <a href="#">Directions/Parking</a>
+                        </div>
+                        <div class="category">
+                            <a href="#">Career Opportunities</a>
+                        </div>
+                        <div class="sidebar-footer">
+                            <a href="#">
+                                <img style="width: 100%" class="img-fluid" src="./static/images/content-navlink-news.jpg"
+                                    alt="">
+                            </a>
+                        </div>
+                        <div class="sidebar-content-bottom">
+                            <div><strong>News &amp; Events</strong></div>
+                            <div>Join our magnificent firm and do more stuff with us.</div>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-12">
+                    <img src="./static/images/content-05-contact.jpg" alt="" class="img-fluid" style="width: 100%;">
+                </div>
+            </div>
+            <div class="row contact-container">
+                <div class="col-md-12">
+                    <p>The office hours are 8am - 5pm Monday through Friday</p>
+                    <p>
+                    <div>689 East South Street</div>
+                    <div>Suite 4210</div>
+                    <div>Houston, Texas 09324</div>
+                    </p>
+                    <p>PH: 555.555.5555</p>
+                    <p>FAX: 555.555.5555</p>
+                    <p>Contact Rosemary Sage at <a href="mailto: rosemary@lawfirm.com">rosemary@lawfirm.com</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3" style="padding-left: 0px;">
+            <div id="contact-sidebar">
+                <div id="contact-sidebar-content">
+                    <ul class="list-unstyled">
+                        <img style="width: 100%" class="img-fluid" src="./static/images/content-link-where.jpg" alt="">
+                        <div class="contact-text sidebar-content-bottom">
+                            <div class="red-text"><strong>Where We Work</strong></div>
+                            <div class="red-text">Find out more about our work coverage area</div>
+                        </div>
+                        <div class="sidebar-footer">
+                            <a href="#">
+                                <img style="width: 100%" class="img-fluid" src="./static/images/content-link-reputation.jpg"
+                                    alt="">
+                            </a>
+                        </div>
+                        <div class="sidebar-content-bottom">
+                            <div style="color: black;"><strong>News &amp; Events</strong></div>
+                            <div style="color: black;">Join our magnificent firm and do more stuff with us.</div>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
